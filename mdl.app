@@ -135,7 +135,7 @@ template tabs( active: String, elems: [header: String, content: TemplateElements
 
 section input
 
-derivetemplate labelinput Type {
+expandtemplate labelinput to Type {
   template input( label: String, s: ref Type ){
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       input( s )[ class="mdl-textfield__input", id=id, all attributes ]
@@ -144,15 +144,18 @@ derivetemplate labelinput Type {
   }
 }
 
-derive labelinput String
-derive labelinput Email
-derive labelinput Secret
-derive labelinput WikiText
-derive labelinput Text
-derive labelinput Int
-derive labelinput Float
-derive labelinput Long
-
+expand 
+  String
+  Email
+  Secret
+  WikiText
+  Text
+  Int
+  Float
+  Long
+  Date
+  to labelinput
+  
 template input( label: String, b: ref Bool ){
   <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = id>
     input( b )[ id = id, class = "mdl-checkbox__input" ]
